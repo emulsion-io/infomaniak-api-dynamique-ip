@@ -1,0 +1,16 @@
+; Confiuration file for the API
+
+[app]
+debug = false
+
+[api]
+user = utilisateur du comnpte
+pass = mot de passe du compte
+
+[domaine]
+ndd[] = nomdedomaine.com
+name[] = www
+
+; Si vous avez plusieurs domaines, ajoutez les lignes suivantes en les modifiant
+; ndd[] = nomdedomaine2.com
+; name[] = www2
