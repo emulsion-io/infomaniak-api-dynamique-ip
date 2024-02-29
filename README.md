@@ -14,6 +14,11 @@ PHP 5.6 ou supérieur
 Un compte Infomaniak avec un utilisateur DynDNS configuré  
 Un domaine géré par Infomaniak
 
+### Création d'un utilisateur DynDNS
+```
+Web & Domaine > Domaine > Choix du Domaine > Dynamic DNS 
+```
+
 ### Installation
 ```bash
 crontab -e
