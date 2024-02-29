@@ -33,7 +33,7 @@ Remplacer le chemin par le chemin vers le script sur votre serveur.
 ### Configuration du script
 renommer le fichier config.ini.dev en config.ini
 ```bash
-mv config.ini.dev config.php
+mv config.ini.dev config.ini
 ```
 
 Editer le fichier config.php
