@@ -1,43 +1,66 @@
 # infomaniak-api-dynamique-ip
 Edit subdomaine name with IP dynamique in PHP
 
-Ce script est conçu pour automatiser la mise à jour de l'adresse IP d'un serveur dans la zone DNS d'Infomaniak.  
-Il est exécuté tous les soirs à une heure prédéfinie (voir crontab sur votre serveur).  
-Il utilise les informations d'un compte DynDNS  pour se connecter à Infomaniak.  
-Le script utilise une API Tier pour récupérer l'adresse IP public actuelle du serveur.  
-Ensuite le script met à jour l'adresse IP dans la zone DNS d'Infomaniak avec l'adresse IP actuelle du serveur.
+Ce script est concu pour automatiser la mise a jour de l'adresse IP d'un serveur dans la zone DNS d'Infomaniak.
+Il est execute tous les soirs a une heure predefinie (voir crontab sur votre serveur).
+Il utilise les informations d'un compte DynDNS pour se connecter a Infomaniak.
+Le script utilise une API tierce pour recuperer l'adresse IP publique actuelle du serveur.
+Ensuite le script met a jour l'IP dans la zone DNS d'Infomaniak avec l'adresse IP actuelle du serveur.
 
 ## Configuration
 
-### Prérequis
-PHP 5.6 ou supérieur  
-Un compte Infomaniak avec un utilisateur DynDNS configuré  
-Un domaine géré par Infomaniak
+### Prerequis
+PHP 5.6 ou superieur
+Un compte Infomaniak avec un utilisateur DynDNS configure
+Un domaine gere par Infomaniak
 
-### Création d'un utilisateur DynDNS
-```
-Web & Domaine > Domaine > Choix du Domaine > Dynamic DNS 
+### Creation d'un utilisateur DynDNS
+```text
+Web & Domaine > Domaine > Choix du Domaine > Dynamic DNS
 ```
 
-### Installation
+### Installation PHP
 ```bash
 crontab -e
 ```
 
-Ajouter la ligne suivante pour exécuter le script tous les soirs à 1h du matin
+Ajouter la ligne suivante pour executer le script tous les soirs a 1h du matin:
 ```bash
 0 1 * * * php /chemin/vers/le/script/index.php
 ```
-Remplacer le chemin par le chemin vers le script sur votre serveur.
 
 ### Configuration du script
-renommer le fichier config.ini.dev en config.ini
+Renommer le fichier `config.ini.dev` en `config.ini`:
 ```bash
 mv config.ini.dev config.ini
 ```
 
-Editer le fichier config.php
+Editer le fichier:
 ```bash
 nano config.ini
 ```
-Modifier selon vos besoins.
+
+## Alternative Linux sans PHP
+
+Une version Bash est disponible dans `index.sh`.
+Elle lit le meme `config.ini` et fait les memes appels DynDNS Infomaniak.
+
+### Prerequis
+- bash
+- curl
+
+### Lancer manuellement
+```bash
+chmod +x /chemin/vers/le/script/index.sh
+/chemin/vers/le/script/index.sh
+```
+
+Optionnel: passer un chemin de config personnalise:
+```bash
+/chemin/vers/le/script/index.sh /chemin/vers/le/script/config.ini
+```
+
+### Cron Linux sans PHP
+```bash
+0 1 * * * /chemin/vers/le/script/index.sh >> /var/log/infomaniak-dyndns.log 2>&1
+```
